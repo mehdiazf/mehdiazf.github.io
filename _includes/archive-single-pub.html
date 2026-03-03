@@ -1,0 +1,59 @@
+{% include base_path %}
+
+{% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% else %}
+  {% assign teaser = site.teaser %}
+{% endif %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="{{ include.type | default: "list" }}__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork" style="display: flex; gap: 20px; align-items: flex-start;">
+    
+    {% if teaser %}
+      <div class="archive__item-teaser" style="flex: 0 0 150px; margin-right: 20px;">
+        <img src=
+          {% if teaser contains "://" %}
+            "{{ teaser }}"
+          {% else %}
+            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
+          {% endif %}
+          alt="" style="width: 100%; border-radius: 4px;">
+      </div>
+    {% endif %}
+
+    <div class="archive__item-body" style="flex: 1;">
+      <h2 class="archive__item-title" itemprop="headline" style="margin-top: 0;">
+        {% if post.link %}
+          <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+        {% else %}
+          <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+        {% endif %}
+      </h2>
+      
+      {% if post.read_time %}
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
+      {% endif %}
+
+      {% if post.venue %}
+        <p class="archive__item-excerpt" itemprop="description" style="margin-bottom: 5px; font-style: italic;">
+          {{ post.citation }}
+        </p>
+      {% endif %}
+
+      {% if post.excerpt %}
+        <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
+      {% endif %}
+      
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" style="font-size: 0.8em; color: #52adc8;">[Download PDF]</a>
+      {% endif %}
+    </div>
+
+  </article>
+</div>

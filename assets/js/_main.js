@@ -140,4 +140,41 @@ $(document).ready(function () {
     preventDefault: false,
   });
 
-});
+})
+
+
+<script>
+  // Define the function globally on the window object
+  window.toggle_section = function(id) {
+      console.log("Attempting to toggle:", id);
+      
+      var target = document.getElementById(id);
+      if (!target) {
+          console.error("Target Element Not Found for ID:", id);
+          return;
+      }
+
+      // 1. Find the parent container (to detect siblings)
+      var parent = target.parentElement;
+      
+      // 2. Close any other open boxes in this specific container
+      if (parent) {
+          var siblings = parent.children;
+          for (var i = 0; i < siblings.length; i++) {
+              var child = siblings[i];
+              // If it's a hidden block, is open, and is NOT the one we clicked
+              if (child !== target && child.classList.contains('open')) {
+                  child.classList.remove('open');
+              }
+          }
+      }
+
+      // 3. Toggle the target state
+      if (target.classList.contains('open')) {
+          target.classList.remove('open');
+      } else {
+          target.classList.add('open');
+      }
+  };
+</script>
+

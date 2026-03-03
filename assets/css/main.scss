@@ -1,6 +1,5 @@
+--- 
 ---
----
-
 /*
  * This file controls what is imported from /_sass
  *
@@ -8,36 +7,169 @@
    sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
  */
 
-@import
-    "vendor/breakpoint/breakpoint",
+@import "vendor/breakpoint/breakpoint",
 
-    "themes",
-    "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
-    "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
+"themes",
+"theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
+"theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
 
-    "include/mixins",
-    "vendor/susy/susy",
+"include/mixins",
+"vendor/susy/susy",
 
-    "layout/reset",
-    "layout/base",
+"layout/reset",
+"layout/base",
 
-    "include/utilities",
-    "layout/tables",
-    "layout/buttons",
-    "layout/notices",
-    "layout/masthead",
-    "layout/navigation",
-    "layout/footer",
-    "syntax",
+"include/utilities",
+"layout/tables",
+"layout/buttons",
+"layout/notices",
+"layout/masthead",
+"layout/navigation",
+"layout/footer",
+"syntax",
 
-    "layout/forms",
+"layout/forms",
 
-    "layout/page",
-    "layout/archive",
-    "layout/sidebar",
-    "layout/json_cv",
+"layout/page",
+"layout/archive",
+"layout/sidebar",
+"layout/json_cv",
 
-    "vendor/font-awesome/fontawesome",
-    "vendor/font-awesome/solid",
-    "vendor/font-awesome/brands"
+"vendor/font-awesome/fontawesome",
+"vendor/font-awesome/solid",
+"vendor/font-awesome/brands"
 ;
+
+
+.masthead {
+    background: #416096 !important; 
+    border: none !important;
+}
+
+.masthead__inner-wrap,
+.masthead__menu,
+.greedy-nav,
+.greedy-nav .visible-links,
+.masthead__menu-item {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.masthead__menu-item a {
+    color: #ffffff !important; 
+    background: transparent !important; 
+}
+
+.masthead__menu-item a:hover {
+    color: #cccccc !important; 
+    text-decoration: underline;
+}
+
+.greedy-nav .nav-selector {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+.greedy-nav .hidden-links {
+    background: #ffffff !important; 
+}
+.greedy-nav .hidden-links a {
+    color: #000000 !important; 
+}
+
+
+.author__urls .ai-google-scholar,
+.author__urls .ai-google-scholar-square {
+    color: #416096 !important; /* Blue */
+}
+
+.author__urls .fa-linkedin,
+.author__urls .fa-linkedin-in {
+    color: #416096 !important; /* LinkedIn Blue */
+}
+
+.author__urls .fa-github {
+    color: #416096 !important; /* Dark Grey */
+}
+
+.author__urls a:hover .ai-google-scholar,
+.author__urls a:hover .ai-google-scholar-square {
+    color: #416096 !important; /* Darker Blue on hover */
+}
+
+/* 1. Location Icon (The Pin) */
+.author__urls .fa-location-dot {
+    color: #416096 !important; /* Example: Red */
+}
+
+/* 2. Email Icon (The Envelope) */
+.author__urls .fa-envelope {
+    color: #416096 !important; /* Example: Orange */
+}
+
+/* 3. Ensure hover effects don't break them */
+.author__urls a:hover .fa-envelope {
+    color: #416096 !important; /* Darker Orange on hover */
+}
+
+/* ===========================================
+   SLIDE-DOWN BOX STYLES
+   =========================================== */
+
+/* 1. Button Styling (Outline Blue) */
+.archive__item-body .links .btn {
+    color: #416096 !important;
+    background-color: transparent !important;
+    border: 1px solid #416096 !important;
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    margin-right: 5px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.archive__item-body .links .btn:hover {
+    background-color: #416096 !important;
+    color: #ffffff !important;
+}
+
+/* 2. Hidden State (Collapsed) */
+.hidden-block {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin 0.3s ease;
+    margin-top: 0;
+    border: none;
+}
+
+/* 3. Open State (Expanded) */
+.hidden-block.open {
+    max-height: 800px; /* Big enough to fit content */
+    opacity: 1;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-left: 3px solid #416096; /* Blue accent line */
+    border-radius: 4px;
+}
+
+/* 4. Text Styling inside the box */
+.hidden-block p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #333;
+    line-height: 1.5;
+}
+.hidden-block pre {
+    margin: 0;
+    font-size: 0.85em;
+    white-space: pre-wrap;
+    font-family: monospace;
+    background: transparent;
+    border: none;
+}
