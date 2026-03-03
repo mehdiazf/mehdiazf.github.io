@@ -16,7 +16,10 @@ RUN groupadd -g 1000 vscode && \
 WORKDIR /usr/src/app
 
 # Set permissions for the working directory
-RUN chown -R vscode:vscode /usr/src/app
+#RUN chown -R vscode:vscode /usr/src/app
+RUN mkdir -p /usr/local/bundle && \
+    chown -R vscode:vscode /usr/src/app && \
+    chown -R vscode:vscode /usr/local/bundle
 
 # Switch to the non-root user
 USER vscode
