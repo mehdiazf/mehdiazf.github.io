@@ -148,12 +148,12 @@
 
 /* 3. Open State (Expanded) */
 .hidden-block.open {
-    max-height: 800px; /* Big enough to fit content */
+    max-height: 800px; 
     opacity: 1;
     margin-top: 15px;
     padding: 15px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
     border-left: 3px solid #416096; /* Blue accent line */
     border-radius: 4px;
 }
@@ -162,7 +162,7 @@
 .hidden-block p {
     margin: 0;
     font-size: 0.9em;
-    color: #333;
+    color: inherit;
     line-height: 1.5;
 }
 .hidden-block pre {
@@ -172,4 +172,13 @@
     font-family: monospace;
     background: transparent;
     border: none;
+    color: inherit;
 }
+
+// @media (prefers-color-scheme: dark) {
+//     .hidden-block.open {
+//         background-color: #1a1a1a; /* Dark background for the expanded box */
+//         border-color: #333;
+//         border-left: 3px solid #416096;
+//     }
+// }
